@@ -16,4 +16,4 @@ With that done, run the following commands:
 
 You should be able to deploy this application to Vercel by simply connecting the GitHub repo to a new Vercel project. You will also need to configure the `API_URL` environment variable on Vercel to match the deployed API url for your backend. Likewise, you may need to configure the `FRONTEND_URL` environment varialbe on your Backend to match the deployed URL for this app.
 
-Team Norms Doc: 
+Team Norms Doc: https://docs.google.com/document/d/1AzPcXTyAJkRiLyW03GoV-Y48XBEgrjq_DubKqYnOXZs/edit?usp=sharing
