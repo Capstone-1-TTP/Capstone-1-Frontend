@@ -10,6 +10,10 @@ const NavBar = ({ user, onLogout }) => {
       </div>
 
       <div className="nav-links">
+        {/* ✅ Add the Polls Link here */}
+        <Link to="/polls" className="nav-link">
+          Polls
+        </Link>
         {user ? (
           <div className="user-section">
             <span className="username">Welcome, {user.username}!</span>
