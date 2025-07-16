@@ -9,8 +9,8 @@ const Signup = ({ setUser }) => {
     username: "",
     password: "",
     confirmPassword: "",
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     email:"",
     profilePic:"", // URL or file handle for future reference 
   });
@@ -39,11 +39,11 @@ const Signup = ({ setUser }) => {
       newErrors.confirmPassword = "Passwords do not match";
     }
 
-    if (!formData.firstname) {
+    if (!formData.firstName) {
       newErrors.firstname = "First name is required";
     } 
 
-    if (!formData.lastname) {
+    if (!formData.lastName) {
       newErrors.lastname = "Last name is required";
     }
 
