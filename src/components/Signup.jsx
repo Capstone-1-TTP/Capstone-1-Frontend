@@ -9,6 +9,10 @@ const Signup = ({ setUser }) => {
     username: "",
     password: "",
     confirmPassword: "",
+    firstname: "",
+    lastname: "",
+    email:"",
+    profilePic:"", // URL or file handle for future reference 
   });
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -35,6 +39,20 @@ const Signup = ({ setUser }) => {
       newErrors.confirmPassword = "Passwords do not match";
     }
 
+    if (!formData.firstname) {
+      newErrors.firstname = "First name is required";
+    } 
+
+    if (!formData.lastname) {
+      newErrors.lastname = "Last name is required";
+    }
+
+    if (!formData.email) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Invalid characters"; 
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -53,6 +71,10 @@ const Signup = ({ setUser }) => {
         {
           username: formData.username,
           password: formData.password,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          profilePic: formData.profilePic
         },
         { withCredentials: true }
       );
@@ -96,6 +118,56 @@ const Signup = ({ setUser }) => {
         )}
 
         <form onSubmit={handleSubmit}>
+          <div className="form-group">
+    <label htmlFor="firstName">First Name:</label>
+    <input
+      type="text"
+      id="firstName"
+      name="firstName"
+      value={formData.firstName}
+      onChange={handleChange}
+      className={errors.firstName ? "error" : ""}
+    />
+    {errors.firstName && <span className="error-text">{errors.firstName}</span>}
+  </div>
+
+  <div className="form-group">
+    <label htmlFor="lastName">Last Name:</label>
+    <input
+      type="text"
+      id="lastName"
+      name="lastName"
+      value={formData.lastName}
+      onChange={handleChange}
+      className={errors.lastName ? "error" : ""}
+    />
+    {errors.lastName && <span className="error-text">{errors.lastName}</span>}
+  </div>
+
+  <div className="form-group">
+    <label htmlFor="email">Email:</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      value={formData.email}
+      onChange={handleChange}
+      className={errors.email ? "error" : ""}
+    />
+    {errors.email && <span className="error-text">{errors.email}</span>}
+  </div>
+
+  <div className="form-group">
+    <label htmlFor="profilePic">Profile Picture URL:</label>
+    <input
+      type="text"
+      id="profilePic"
+      name="profilePic"
+      value={formData.profilePic}
+      onChange={handleChange}
+    />
+  </div>
+          
           <div className="form-group">
             <label htmlFor="username">Username:</label>
             <input
