@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 // import PollForm from './PollForm'; // ✅ make sure this is correct
-
+import { Link } from "react-router-dom";
 // const dummyPolls = [
 //   { id: 1, title: 'Best Snack?', options: ['Chips', 'Cookies', 'Fruit'] },
 //   { id: 2, title: 'Favorite IDE?', options: ['VS Code', 'WebStorm', 'Vim'] }
 // ];
 
 const PollsPage = () => {
+  
   const [allPolls, setAllPolls] = useState([]);
 
   const fetchAllPolls = async () => {
@@ -30,6 +31,7 @@ const PollsPage = () => {
 
   return (
     <div>
+      <button ><Link to="/polls/new">Create Poll</Link></button>
       {/* ✅ Add the poll creation form
       <PollForm /> */}
 
@@ -47,4 +49,6 @@ const PollsPage = () => {
   );
 }
 
+
 export default PollsPage;
+
