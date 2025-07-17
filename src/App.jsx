@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Home from "./components/Home";
-import Polls from './components/Polls';
 import NotFound from "./components/NotFound";
 import { API_URL } from "./shared";
 import CreatePoll from './components/PollForm';
@@ -58,8 +57,6 @@ const App = () => {
           <Route path="polls" element={<div><Outlet/></div>}>
             <Route index element={<Polls/>}/>
             <Route path="new" element={<CreatePoll/>} />
-    
-
           </Route>
           <Route exact path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
