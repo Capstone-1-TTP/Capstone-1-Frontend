@@ -18,7 +18,7 @@ const PollsPage = () => {
       );
       setAllPolls(pollsResponse.data);
     } catch (error) {
-      console.log("SOMETHING BROKE 😢");
+      console.log("SOMETHING BROKE");
       console.error(error);
     }
   };
@@ -32,10 +32,10 @@ const PollsPage = () => {
   return (
     <div>
       <button ><Link to="/polls/new">Create Poll</Link></button>
-      {/* ✅ Add the poll creation form
+      {/* Add the poll creation form
       <PollForm /> */}
 
-      {/* ✅ Show existing dummy polls */}
+      {/* Show existing dummy polls */}
       <h2>Available Polls</h2>
       {allPolls.map((poll) => (
         <div key={poll.id}>
