@@ -10,7 +10,7 @@ const NavBar = ({ user, onLogout }) => {
       </div>
 
       <div className="nav-links">
-        {/* ✅ Add the Polls Link here */}
+        {/* Add the Polls Link here */}
         <Link to="/polls" className="nav-link">
           Polls
         </Link>
