@@ -9,6 +9,7 @@ import Signup from "./components/Signup";
 import Home from "./components/Home";
 import NotFound from "./components/NotFound";
 import { API_URL } from "./shared";
+import Polls from "./components/Polls";
 import CreatePoll from './components/PollForm';
 
 const App = () => {
