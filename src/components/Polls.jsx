@@ -3,6 +3,7 @@ import axios from "axios";
 // import PollForm from './PollForm'; // make sure this is correct
 import { Link } from "react-router-dom";
 
+
 const Polls = () => {
   const [allPolls, setAllPolls] = useState([]);
 
@@ -33,7 +34,7 @@ const Polls = () => {
       {/* Show existing dummy polls */}
       <h2>Available Polls</h2>
       {allPolls.map((poll) => (
-        <div key={poll.id}>
+        <div className="poll-list" key={poll.id}>
           <h3>{poll.title}</h3>
           <p>{poll.description}</p>
           <p>{poll.status}</p>

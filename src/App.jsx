@@ -11,6 +11,8 @@ import NotFound from "./components/NotFound";
 import { API_URL } from "./shared";
 import Polls from "./components/Polls";
 import CreatePoll from './components/PollForm';
+import MyDashboard from './components/Dashboard';
+import Poll from './components/Poll';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -58,9 +60,11 @@ const App = () => {
           <Route path="polls" element={<div><Outlet/></div>}>
             <Route index element={<Polls/>}/>
             <Route path="new" element={<CreatePoll/>} />
+            <Route path =":pollId" element ={<Poll/>} />
           </Route>
           <Route exact path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
+          <Route path ="dashboard" element={<MyDashboard user={user} />} />  
         </Routes>
       </div>
     </div>
