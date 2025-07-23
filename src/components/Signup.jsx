@@ -6,7 +6,6 @@ import { API_URL } from "../shared";
 
 const Signup = ({ setUser }) => {
   const [formData, setFormData] = useState({
-    username: "",
     password: "",
     confirmPassword: "",
     firstName: "",
@@ -20,12 +19,6 @@ const Signup = ({ setUser }) => {
 
   const validateForm = () => {
     const newErrors = {};
-
-    if (!formData.username) {
-      newErrors.username = "Username is required";
-    } else if (formData.username.length < 3 || formData.username.length > 20) {
-      newErrors.username = "Username must be between 3 and 20 characters";
-    }
 
     if (!formData.password) {
       newErrors.password = "Password is required";
@@ -69,7 +62,6 @@ const Signup = ({ setUser }) => {
       const response = await axios.post(
         `${API_URL}/auth/signup`,
         {
-          username: formData.username,
           password: formData.password,
           firstName: formData.firstName,
           lastName: formData.lastName,
@@ -167,22 +159,7 @@ const Signup = ({ setUser }) => {
       onChange={handleChange}
     />
   </div>
-          
-          <div className="form-group">
-            <label htmlFor="username">Username:</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              className={errors.username ? "error" : ""}
-            />
-            {errors.username && (
-              <span className="error-text">{errors.username}</span>
-            )}
-          </div>
-
+  
           <div className="form-group">
             <label htmlFor="password">Password:</label>
             <input
