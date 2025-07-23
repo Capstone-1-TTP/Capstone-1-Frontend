@@ -11,8 +11,8 @@ const NavBar = ({ user, onLogout }) => {
 
       <div className="nav-links">
         {/* Add the Polls Link here */}
-        <Link to="/polls" className="nav-link">
-          Polls
+        <Link to="/pollfeed" className="nav-link">
+          Poll Feed
         </Link>
         <Link to ="/dashboard" className="nav-link">
         Dashboard

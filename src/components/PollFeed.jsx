@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 
-const Polls = () => {
+const PollFeed = () => {
   const [allPolls, setAllPolls] = useState([]);
 
   const fetchAllPolls = async () => {
@@ -27,14 +27,14 @@ const Polls = () => {
 
   return (
     <div>
-      <button ><Link to="/polls/new">Create Poll</Link></button>
+      <button ><Link to="/pollfeed/createpoll">Create Poll</Link></button>
       {/* Add the poll creation form
       <PollForm /> */}
 
       {/* Show existing dummy polls */}
       <h2>Available Polls</h2>
       {allPolls.map((poll) => (
-        <div className="poll-list" key={poll.id}>
+        <div className="poll-feed" key={poll.id}>
           <h3>{poll.title}</h3>
           <p>{poll.description}</p>
           <p>{poll.status}</p>
@@ -45,4 +45,4 @@ const Polls = () => {
   );
 };
 
-export default Polls;
+export default PollFeed;

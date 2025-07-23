@@ -9,7 +9,7 @@ import Signup from "./components/Signup";
 import Home from "./components/Home";
 import NotFound from "./components/NotFound";
 import { API_URL } from "./shared";
-import Polls from "./components/Polls";
+import PollFeed from "./components/PollFeed";
 import CreatePoll from './components/PollForm';
 import MyDashboard from './components/Dashboard';
 import Poll from './components/Poll';
@@ -57,9 +57,9 @@ const App = () => {
         <Routes>
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/signup" element={<Signup setUser={setUser} />} />
-          <Route path="polls" element={<div><Outlet/></div>}>
-            <Route index element={<Polls/>}/>
-            <Route path="new" element={<CreatePoll/>} />
+          <Route path="/pollfeed" element={<div><Outlet/></div>}>
+            <Route index element={<PollFeed/>}/>
+            <Route path="createpoll" element={<CreatePoll/>} />
             <Route path =":pollId" element ={<Poll/>} />
           </Route>
           <Route exact path="/" element={<Home />} />
