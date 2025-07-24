@@ -8,20 +8,28 @@ import { Link } from "react-router-dom";
 const Dashboard = () => {
   const [allPolls, setAllPolls] = useState([]);
   const [allBallots, setAllBallots] = useState([]);
+  const [filter, setFilter] = useState("all");
   const [activeTab, setActiveTab] = useState("polls");
 
+  // === fetching ballots with filtering ===
   const fetchAllBallots = async () => {
-    try{
-        const ballotsResponse = await axios.get(
-          "http://localhost:8080/api/ballots/mypolls/"
-        );
-        setAllBallots(ballotsResponse.data);
-    } catch(err){
-        console.log("Unable to fetch ballots");
-        console.error(err);
+    try {
+      let response;
+      if (filter === "saved") {
+        response = await axios.get("http://localhost:8080/api/ballots/savedBallots");
+      } else if (filter === "submitted") {
+        response = await axios.get("http://localhost:8080/api/ballots/submittedBallots");
+      } else {
+        response = await axios.get("http://localhost:8080/api/ballots/allMyBallots");
+      }
+      setAllBallots(response.data);
+    } catch (err) {
+      console.log("Unable to fetch ballots");
+      console.error(err);
     }
-    }
+  };
 
+  // === Fetching Polls === 
   const fetchAllPolls = async () => {
     try {
       const pollsResponse = await axios.get(
@@ -34,15 +42,18 @@ const Dashboard = () => {
     }
   };
 
+  // === Re-fetch ballots when filter status changes ===
   useEffect(() => {
     fetchAllBallots();
     fetchAllPolls();
-  }, []);
+  }, [filter]);
 
+  console.log("All ballots:", allBallots);
   console.log("All polls:", allPolls);
 
   return (
     <div>
+        {/* === Tab Buttons === */}
         <div className="dashboard-tabs">
         <button
           className={activeTab === "polls" ? "active" : ""}
@@ -57,6 +68,8 @@ const Dashboard = () => {
           My Ballots
         </button>
       </div>
+
+      {/* === Polls Tab === */}
       {activeTab === "polls" && (
         <div>
             <h2>My Polls</h2>
@@ -74,9 +87,22 @@ const Dashboard = () => {
     )}
     </div>
       )}
+
+      {/* === Ballots Tab ===*/}
       {activeTab === "ballots" &&(
-        <div>
+        <div className="ballots-container">
           <h2>My Ballots</h2>
+
+          {/* === ballot filter dropdown === */}
+          <div className="filter-container">
+            <select value={filter} onChange={(e) => setFilter(e.target.value)}>  
+              <option value="all">All</option>
+              <option value="saved">Saved Ballots</option>
+              <option value="submitted">Submitted Ballots</option>
+            </select>
+          </div>
+          
+          {/* === List of ballots === */}
           {allBallots.length === 0 ? (
             <p>You have not participated in any polls yet.</p>
           ) : (
