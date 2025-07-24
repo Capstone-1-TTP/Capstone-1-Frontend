@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { API_URL } from "../shared";
 // import PollForm from './PollForm'; // make sure this is correct
 import { Link } from "react-router-dom";
 
@@ -16,11 +17,11 @@ const Dashboard = () => {
     try {
       let response;
       if (filter === "saved") {
-        response = await axios.get("http://localhost:8080/api/ballots/savedBallots");
+        response = await axios.get(`${API_URL}/api/ballots/savedBallots`);
       } else if (filter === "submitted") {
-        response = await axios.get("http://localhost:8080/api/ballots/submittedBallots");
+        response = await axios.get(`${API_URL}/api/ballots/submittedBallots`);
       } else {
-        response = await axios.get("http://localhost:8080/api/ballots/allMyBallots");
+        response = await axios.get(`${API_URL}/api/ballots/allMyBallots`);
       }
       setAllBallots(response.data);
     } catch (err) {
@@ -33,7 +34,7 @@ const Dashboard = () => {
   const fetchAllPolls = async () => {
     try {
       const pollsResponse = await axios.get(
-        "http://localhost:8080/api/polls/mypolls/" // Adjust the endpoint to fetch user's polls
+        `${API_URL}/api/polls/mypolls/` // Adjust the endpoint to fetch user's polls
       );
       setAllPolls(pollsResponse.data);
     } catch (error) {

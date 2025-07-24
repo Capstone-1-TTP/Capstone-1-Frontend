@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { API_URL } from "../shared";
 import { useSearchParams } from "react-router-dom";
 
 const Poll = () => {
@@ -9,9 +10,7 @@ const Poll = () => {
 
     const fetchPoll = async () => {
         try {
-            const pollResponse = await axios.get(
-                `http://localhost:8080/api/polls/1`
-            );
+            const pollResponse = await axios.get(`${API_URL}/api/polls/1`);
             setPoll(pollResponse.data);
         } catch (err) {
             console.error(err);
