@@ -19,6 +19,7 @@ const App = () => {
 
   const checkAuth = async () => {
     try {
+      console.log("This is the API_URL:", API_URL);
       const response = await axios.get(`${API_URL}/auth/me`, {
         withCredentials: true,
       });
