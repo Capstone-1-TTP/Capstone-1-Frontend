@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 // import PollForm from './PollForm'; // make sure this is correct
+import { API_URL } from "../shared";
 import { Link } from "react-router-dom";
 
 
@@ -9,9 +10,7 @@ const PollFeed = () => {
 
   const fetchAllPolls = async () => {
     try {
-      const pollsResponse = await axios.get(
-        "http://localhost:8080/api/polls/"
-      );
+      const pollsResponse = await axios.get(`${API_URL}/api/polls/`);
       setAllPolls(pollsResponse.data);
     } catch (error) {
       console.log("SOMETHING BROKE");
