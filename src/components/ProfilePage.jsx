@@ -1,15 +1,18 @@
-/* import React from "react";
+import React from "react";
+import "./ProfilePage.css";
 
 const ProfilePage = ({ user }) => {
-  if (!user) return <p>Loading...</p>;
+  if (!user) {
+    return <div>Please log in to view your profile.</div>;
+  }
 
   return (
-    <div className="profile-page">
-      <h2>{user.username}'s Profile</h2>
+    <div className="profile-container">
+      <h2>My Profile</h2>
       <img
-        src={user.profilePic}
+        src={user.profilePic || "https://i.pravatar.cc/150?img=1"}
         alt="Profile"
-        style={{ width: "150px", borderRadius: "50%" }}
+        className="profile-pic"
       />
       <p><strong>First Name:</strong> {user.firstName}</p>
       <p><strong>Last Name:</strong> {user.lastName}</p>
@@ -18,4 +21,4 @@ const ProfilePage = ({ user }) => {
   );
 };
 
-export default ProfilePage; */
+export default ProfilePage;

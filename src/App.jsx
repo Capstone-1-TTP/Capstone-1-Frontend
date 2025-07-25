@@ -13,6 +13,8 @@ import PollFeed from "./components/PollFeed";
 import CreatePoll from './components/PollForm';
 import MyDashboard from './components/Dashboard';
 import Poll from './components/Poll';
+import ProfilePage from "./components/ProfilePage";
+
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -57,6 +59,7 @@ const App = () => {
         <Routes>
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/signup" element={<Signup setUser={setUser} />} />
+          <Route path="/profile" element={<ProfilePage user={user} />} />
           <Route path="/pollfeed" element={<div><Outlet/></div>}>
             <Route index element={<PollFeed/>}/>
             <Route path="createpoll" element={<CreatePoll/>} />
