@@ -14,12 +14,15 @@ const NavBar = ({ user, onLogout }) => {
         <Link to="/pollfeed" className="nav-link">
           Poll Feed
         </Link>
+        <Link to="/profile" className="nav-link">
+        Profile
+        </Link>
         <Link to ="/dashboard" className="nav-link">
         Dashboard
         </Link>
         {user ? (
           <div className="user-section">
-            <span className="username">Welcome, {user.username}!</span>
+            <span className="email">Welcome, {user.email}!</span> 
             <button onClick={onLogout} className="logout-btn">
               Logout
             </button>
