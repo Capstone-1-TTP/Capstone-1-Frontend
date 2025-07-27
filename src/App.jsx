@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import axios from "axios";
+import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
+import { API_URL } from "./shared";
 import "./AppStyles.css";
 import NavBar from "./components/NavBar";
-import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Home from "./components/Home";
 import NotFound from "./components/NotFound";
-import { API_URL } from "./shared";
 import PollFeed from "./components/PollFeed";
 import CreatePoll from './components/CreatePoll';
 import Dashboard from './components/Dashboard';

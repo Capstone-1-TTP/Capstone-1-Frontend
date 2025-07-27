@@ -4,7 +4,6 @@ import axios from "axios";
 import { API_URL } from "../shared";
 import { Link } from "react-router-dom";
 
-
 const PollFeed = () => {
   const [allPolls, setAllPolls] = useState([]);
 

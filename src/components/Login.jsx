@@ -44,7 +44,6 @@ const Login = ({ setUser }) => {
       const response = await axios.post(`${API_URL}/auth/login`, formData, {
         withCredentials: true,
       });
-      
       setUser(response.data.user);
       navigate("/dashboard");
     } catch (error) {

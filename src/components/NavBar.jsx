@@ -26,7 +26,7 @@ const NavBar = ({ user, onLogout }) => {
             {/* <button onClick={onLogout} className="logout-btn">
               Logout
             </button> */}
-            <Link to="/" className="logout-btn">
+            <Link to="/" className="logout-btn" onClick={onLogout}>
               Logout
             </Link>
           </div>

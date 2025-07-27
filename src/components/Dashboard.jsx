@@ -45,7 +45,6 @@ const Dashboard = ({user}) => {
   // === Re-fetch ballots when filter status changes ===
   useEffect(() => {
     fetchAllBallots();
-
     fetchAllPolls();
   }, [filter]);
 
