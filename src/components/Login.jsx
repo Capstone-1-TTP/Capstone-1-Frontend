@@ -48,8 +48,10 @@ const Login = ({ setUser }) => {
       navigate("/dashboard");
     } catch (error) {
       if (error.response?.data?.error) {
+        console.log("Login error:", error);
         setErrors({ general: error.response.data.error });
       } else {
+        console.log("Login error:", error);
         setErrors({ general: "An error occurred during login" });
       }
     } finally {
