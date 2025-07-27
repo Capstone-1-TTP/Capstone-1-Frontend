@@ -5,13 +5,7 @@ import { API_URL } from "../shared";
 import { Link } from "react-router-dom";
 import "./Dashboard.css";
 
-<<<<<<< Updated upstream
-const Dashboard = () => {
-=======
-
-
 const Dashboard = ({user}) => {
->>>>>>> Stashed changes
   const [allPolls, setAllPolls] = useState([]);
   const [allBallots, setAllBallots] = useState([]);
   const [filter, setFilter] = useState("all");
