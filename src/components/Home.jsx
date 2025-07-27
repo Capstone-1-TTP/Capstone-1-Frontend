@@ -1,9 +1,9 @@
 import React from "react";
 
-const Home = () => {
+const Home = ({ user }) => {
   return (
     <>
-      <h1>Welcome User!</h1>
+      <h1 className="username">Welcome {user?.username}!</h1>
       <img className="react-logo" src="/react-logo.svg" alt="React Logo" />
     </>
   );

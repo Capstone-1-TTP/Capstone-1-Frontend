@@ -3,8 +3,9 @@ import axios from "axios";
 import { API_URL } from "../shared";
 // import PollForm from './PollForm'; // make sure this is correct
 import { Link } from "react-router-dom";
+import "./Dashboard.css";
 
-const Dashboard = () => {
+const Dashboard = ({user}) => {
   const [allPolls, setAllPolls] = useState([]);
   const [allBallots, setAllBallots] = useState([]);
   const [filter, setFilter] = useState("all");
@@ -19,7 +20,7 @@ const Dashboard = () => {
       } else if (filter === "submitted") {
         response = await axios.get(`${API_URL}/api/ballots/submittedBallots`);
       } else {
-        response = await axios.get(`${API_URL}/api/ballots/allMyBallots`);
+        response = await axios.get(`${API_URL}/api/ballots/allMyBallots,`);
       }
       setAllBallots(response.data);
     } catch (err) {
@@ -32,7 +33,7 @@ const Dashboard = () => {
   const fetchAllPolls = async () => {
     try {
       const pollsResponse = await axios.get(
-        `${API_URL}/api/polls/mypolls/` // Adjust the endpoint to fetch user's polls
+        `${API_URL}/api/polls/mypolls/` + user.id // Adjust the endpoint to fetch user's polls
       );
       setAllPolls(pollsResponse.data);
     } catch (error) {
@@ -44,11 +45,13 @@ const Dashboard = () => {
   // === Re-fetch ballots when filter status changes ===
   useEffect(() => {
     fetchAllBallots();
+
     fetchAllPolls();
   }, [filter]);
 
   console.log("All ballots:", allBallots);
   console.log("All polls:", allPolls);
+  console.log("Current User:", user);
 
   return (
     <div>
