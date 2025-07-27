@@ -26,8 +26,8 @@ const App = () => {
       });
       console.log("Authenticated user:", response.data.user);
       setUser(response.data.user);
-    } catch {
-      console.log("Not authenticated");
+    } catch (error) {
+      console.log("Not authenticated:", error);
       setUser(null);
     }
   };
