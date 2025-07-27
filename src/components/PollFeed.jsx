@@ -26,9 +26,9 @@ const PollFeed = () => {
 
   return (
     <div>
-      <button ><Link to="/pollfeed/createpoll">Create Poll</Link></button>
+      <button><Link to="/pollfeed/createpoll">Create Poll</Link></button>
       {/* Add the poll creation form
-      <PollForm /> */}
+      <CreatePoll /> */}
 
       {/* Show existing dummy polls */}
       <h2>Available Polls</h2>
