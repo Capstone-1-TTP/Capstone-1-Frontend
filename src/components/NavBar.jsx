@@ -15,17 +15,20 @@ const NavBar = ({ user, onLogout }) => {
           Poll Feed
         </Link>
         <Link to="/profile" className="nav-link">
-        Profile
+          Profile
         </Link>
-        <Link to ="/dashboard" className="nav-link">
-        Dashboard
+        <Link to="/dashboard" className="nav-link">
+          Dashboard
         </Link>
         {user ? (
           <div className="user-section">
-            <span className="email">Welcome, {user.email}!</span> 
-            <button onClick={onLogout} className="logout-btn">
+            <span className="email">Welcome, {user.firstName}!</span>
+            {/* <button onClick={onLogout} className="logout-btn">
               Logout
-            </button>
+            </button> */}
+            <Link to="/" className="logout-btn">
+              Logout
+            </Link>
           </div>
         ) : (
           <div className="auth-links">

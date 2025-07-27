@@ -4,8 +4,6 @@ import { API_URL } from "../shared";
 // import PollForm from './PollForm'; // make sure this is correct
 import { Link } from "react-router-dom";
 
-
-
 const Dashboard = () => {
   const [allPolls, setAllPolls] = useState([]);
   const [allBallots, setAllBallots] = useState([]);
@@ -54,16 +52,16 @@ const Dashboard = () => {
 
   return (
     <div>
-        {/* === Tab Buttons === */}
-        <div className="dashboard-tabs">
+      {/* === Tab Buttons === */}
+      <div className="dashboard-tabs">
         <button
-          className={activeTab === "polls" ? "active" : ""}
+          className={activeTab === ("polls" ? "active" : "")}
           onClick={() => setActiveTab("polls")}
         >
           My Polls
         </button>
         <button
-          className={activeTab === "ballots" ? "active" : ""}
+          className={activeTab === ("ballots" ? "active" : "")}
           onClick={() => setActiveTab("ballots")}
         >
           My Ballots
@@ -73,30 +71,30 @@ const Dashboard = () => {
       {/* === Polls Tab === */}
       {activeTab === "polls" && (
         <div>
-            <h2>My Polls</h2>
-            {allPolls.length === 0 ?(
-                <p>No polls have been created.</p>
-            ) : (
-                allPolls.map((poll) => (
-        <div className="poll-list" key={poll.id}>
-          <h3>{poll.title}</h3>
-          <p>{poll.description}</p>
-          <p>{poll.status}</p>
-          <p>{poll.closingDate}</p>
+          <h2>My Polls</h2>
+          {allPolls.length === 0 ? (
+            <p>No polls have been created.</p>
+          ) : (
+            allPolls.map((poll) => (
+              <div className="poll-list" key={poll.id}>
+                <h3>{poll.title}</h3>
+                <p>{poll.description}</p>
+                <p>{poll.status}</p>
+                <p>{poll.closingDate}</p>
+              </div>
+            ))
+          )}
         </div>
-      ))
-    )}
-    </div>
       )}
 
       {/* === Ballots Tab ===*/}
-      {activeTab === "ballots" &&(
+      {activeTab === "ballots" && (
         <div className="ballots-container">
           <h2>My Ballots</h2>
 
           {/* === ballot filter dropdown === */}
           <div className="filter-container">
-            <select value={filter} onChange={(e) => setFilter(e.target.value)}>  
+            <select value={filter} onChange={(e) => setFilter(e.target.value)}>
               <option value="all">All</option>
               <option value="saved">Saved Ballots</option>
               <option value="submitted">Submitted Ballots</option>
@@ -117,10 +115,8 @@ const Dashboard = () => {
           )}
         </div>
       )}
-      </div>
+    </div>
   );
 };
 
-
-      
 export default Dashboard;

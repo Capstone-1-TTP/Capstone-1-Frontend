@@ -10,11 +10,10 @@ import Home from "./components/Home";
 import NotFound from "./components/NotFound";
 import { API_URL } from "./shared";
 import PollFeed from "./components/PollFeed";
-import CreatePoll from './components/PollForm';
-import MyDashboard from './components/Dashboard';
+import CreatePoll from './components/CreatePoll';
+import Dashboard from './components/Dashboard';
 import Poll from './components/Poll';
 import ProfilePage from "./components/ProfilePage";
-
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -25,6 +24,7 @@ const App = () => {
       const response = await axios.get(`${API_URL}/auth/me`, {
         withCredentials: true,
       });
+      console.log("Authenticated user:", response.data.user);
       setUser(response.data.user);
     } catch {
       console.log("Not authenticated");
@@ -61,14 +61,14 @@ const App = () => {
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/signup" element={<Signup setUser={setUser} />} />
           <Route path="/profile" element={<ProfilePage user={user} />} />
-          <Route path="/pollfeed" element={<div><Outlet/></div>}>
-            <Route index element={<PollFeed/>}/>
-            <Route path="createpoll" element={<CreatePoll/>} />
-            <Route path =":pollId" element ={<Poll/>} />
+          <Route path="/pollfeed" element={<div><Outlet /></div>}>
+            <Route index element={<PollFeed />}/>
+            <Route path="createpoll" element={<CreatePoll />} />
+            <Route path=":pollId" element={<Poll />} />
           </Route>
           <Route exact path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
-          <Route path ="dashboard" element={<MyDashboard user={user} />} />  
+          <Route path ="dashboard" element={<Dashboard user={user} />} />
         </Routes>
       </div>
     </div>

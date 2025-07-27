@@ -1,9 +1,9 @@
 import React from "react";
-import "./PollForm.css"; // we’ll create this
+import "./CreatePoll.css"; // we’ll create this
 
-const PollForm = () => {
+const CreatePoll = () => {
   return (
-    <div className="poll-form-container">
+    <div className="create-poll-container">
       <h2 className="poll-title">Create a Poll</h2>
       <input type="text" className="poll-description" placeholder="Poll Title" />
       <input type="text" className="poll-description" placeholder="Poll Description" />
@@ -18,4 +18,4 @@ const PollForm = () => {
   );
 };
 
-export default PollForm;
+export default CreatePoll;
